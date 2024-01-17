@@ -4,8 +4,8 @@ Donate link: https://paypal.me/rvadhel
 Tags: bulk page, bulk post, page generator, bulk creator, generator
 Requires PHP: 5.2.4
 Requires at least: 3.0.1
-Tested up to: 6.2.2
-Stable tag: 1.2
+Tested up to: 6.4.2
+Stable tag: 1.3
 License: GPLv2 or later
 
 Using this plugin user can create Pages/Posts easily with the simplest user interface which provide all the attribute which are necessary while creating Pages/Posts.
@@ -56,6 +56,9 @@ After active plugin go to  Bulk page generator menu
 
 
 == Changelog ==
+= 1.3 =
+Fixed admin enqueue script bug
+Tested upto wp version 6.4.2
 
 = 1.2 =
 Tested upto wp version 6.2.2

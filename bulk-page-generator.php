@@ -3,20 +3,27 @@
 Plugin Name: Bulk Page Generator
 Description: Bulk Pages/Posts Generator is a plugin that provides an easy way through which a user can create multiple pages/posts at a time.
 Author: Geek Code Lab
-Version: 1.2
+Version: 1.3
 Author URI: https://geekcodelab.com/
 Text Domain : bulk-page-generator 
 */
 
 if (!defined('ABSPATH')) exit;
 
-define('BPG_BUILD', 1.2);
+define('BPG_BUILD', 1.3);
 
 if (!defined('BPG_PLUGIN_DIR_PATH'))
     define('BPG_PLUGIN_DIR_PATH', plugin_dir_path(__FILE__));
 
 if (!defined('BPG_PLUGIN_URL'))
     define('BPG_PLUGIN_URL', plugins_url() . '/' . basename(dirname(__FILE__)));
+
+add_action( 'admin_init', 'bpg_plugin_load' );
+function bpg_plugin_load() {
+    if(!current_user_can('publish_posts') && !current_user_can('upload_files')) {
+        return;
+    }
+}
 
 
 $plugin = plugin_basename(__FILE__);
@@ -32,10 +39,10 @@ function bpg_add_plugin_link($links){
 }
 
 // admin scripts
-add_action('admin_print_styles', 'bpg_plugin_admin_scripts');
-function bpg_plugin_admin_scripts(){
-
-    if (is_admin()) {
+add_action('admin_enqueue_scripts', 'bpg_plugin_admin_scripts');
+function bpg_plugin_admin_scripts( $hook ){
+    
+    if (is_admin() && $hook == 'toplevel_page_bulk-page-generator') {
         $plugin_url = BPG_PLUGIN_URL . '/assets';
         wp_enqueue_editor();
         wp_enqueue_media();
