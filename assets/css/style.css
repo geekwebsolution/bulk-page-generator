@@ -1,13 +1,13 @@
-* {
+.toplevel_page_bulk-page-generator * {
     box-sizing: border-box;
 }
 
 :root {
-    --primary-color: #2a324b;
-    --secondary-color: #767b91;
-    --red-color: #f03a47;
-    --border-color: #c7ccdb;
-    --white-color: #ffffff;
+    --bpg-primary-color: #2a324b;
+    --bpg-secondary-color: #767b91;
+    --bpg-red-color: #f03a47;
+    --bpg-border-color: #c7ccdb;
+    --bpg-white-color: #ffffff;
 }
 
 .bpgp-h1 {
@@ -37,8 +37,8 @@
     justify-content: center;
     font-size: 16px;
     line-height: 1.3;
-    color: var(--white-color);
-    background-color: var(--primary-color);
+    color: var(--bpg-white-color);
+    background-color: var(--bpg-primary-color);
     border: 2px solid transparent;
     border-bottom: 0;
     border-radius: 3px 3px 0 0;
@@ -61,10 +61,10 @@
 
 .bpg-tab-list li .nav-tab.nav-tab-active,
 .bpg-tab-list li .nav-tab:hover {
-    color: var(--primary-color);
-    background-color: var(--white-color);
+    color: var(--bpg-primary-color);
+    background-color: var(--bpg-white-color);
     /* border-bottom-color: white; */
-    border-color: var(--primary-color);
+    border-color: var(--bpg-primary-color);
 }
 
 .bpg-tab-list li .nav-tab.nav-tab-active {
@@ -79,7 +79,7 @@
     width: 100%;
     bottom: -2px;
     left: 0;
-    background-color: var(--white-color);
+    background-color: var(--bpg-white-color);
     transition: 0.3s;
 }
 
@@ -89,7 +89,7 @@
 
 .bpg-tab-list li .nav-tab:focus {
     box-shadow: 0px 0px 0px 1px rgb(0 0 0 / 37%);
-    border-color: var(--secondary-color);
+    border-color: var(--bpg-secondary-color);
 }
 
 .bpg_form-table.bpg_sub_table tbody tr td textarea {
@@ -159,7 +159,7 @@
 }
 
 #bpg_copy_icon path {
-    fill: var(--primary-color);
+    fill: var(--bpg-primary-color);
 }
 
 /* COPY */
@@ -176,8 +176,8 @@
 .bpg-tabing-option {
     padding: 35px 50px 50px;
     border-radius: 0 5px 5px 5px;
-    border: 2px solid var(--primary-color);
-    background-color: var(--white-color);
+    border: 2px solid var(--bpg-primary-color);
+    background-color: var(--bpg-white-color);
     box-sizing: border-box;
 }
 
@@ -213,9 +213,9 @@
 .bpg_form-table tbody select {
     min-width: 100%;
     height: 45px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--bpg-border-color);
     border-radius: 3px;
-    color: var(--primary-color);
+    color: var(--bpg-primary-color);
     -webkit-appearance: none;
     appearance: none;
     outline: none !important;
@@ -226,13 +226,13 @@
 }
 
 .bpg_form-table tbody select:hover {
-    color: var(--primary-color);
+    color: var(--bpg-primary-color);
 }
 
 .bpg_form-table tbody input:focus,
 .bpg_form-table tbody textarea:focus,
 .bpg_form-table tbody select:focus {
-    outline: 1px solid var(--secondary-color) !important;
+    outline: 1px solid var(--bpg-secondary-color) !important;
 }
 
 .bpg_dropdown {
@@ -281,7 +281,7 @@
 
 .bpg_form-table.bpg_sub_table tbody {
     display: block;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--bpg-border-color);
     border-radius: 5px;
     margin-bottom: 30px;
 }
@@ -308,27 +308,27 @@
     margin-top: 30px;
     border: 2px solid transparent;
     border-radius: 3px;
-    color: var(--white-color);
-    background-color: var(--primary-color);
+    color: var(--bpg-white-color);
+    background-color: var(--bpg-primary-color);
     cursor: pointer;
     transition: 0.3s;
 }
 
 .bpg-main-table .submit-btn:hover {
-    border: 2px solid var(--primary-color);
+    border: 2px solid var(--bpg-primary-color);
     border-radius: 5px;
-    color: var(--primary-color);
-    background-color: var(--white-color);
+    color: var(--bpg-primary-color);
+    background-color: var(--bpg-white-color);
 }
 
 .bpg_form-table tbody .bpg-upload-button,
 .bpg_form-table tbody .bpg-remove-image-button {
-    color: var(--primary-color);
+    color: var(--bpg-primary-color);
     font-size: 15px;
     font-weight: bold;
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--bpg-primary-color);
     border-radius: 3px;
-    background-color: var(--white-color);
+    background-color: var(--bpg-white-color);
     transition: 0.3s;
     cursor: pointer;
 }
@@ -344,22 +344,22 @@
 
 .bpg_form-table tbody .bpg-remove-image-button {
     margin-bottom: 12px;
-    color: var(--red-color);
-    border-color: var(--red-color);
+    color: var(--bpg-red-color);
+    border-color: var(--bpg-red-color);
 }
 
 .bpg_form-table tbody .bpg-upload-button:hover,
 .bpg_form-table tbody .bpg-remove-image-button:hover {
-    color: var(--white-color);
-    background-color: var(--primary-color);
+    color: var(--bpg-white-color);
+    background-color: var(--bpg-primary-color);
 }
 
 .bpg_form-table tbody .bpg-remove-image-button:hover {
-    background-color: var(--red-color);
+    background-color: var(--bpg-red-color);
 }
 
 p.bpg_note {
-    color: var(--primary-color);
+    color: var(--bpg-primary-color);
     margin: 6px 0 0 0;
     font-size: 14px;
     font-style: italic;
@@ -385,18 +385,18 @@ p.bpg_note {
     margin: 0 0 0 10px;
     float: right;
     padding: 0;
-    background-color: var(--primary-color);
+    background-color: var(--bpg-primary-color);
     border-radius: 3px;
     font-size: 0;
     line-height: 0;
     color: transparent;
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--bpg-primary-color);
     cursor: pointer;
 }
 
 .bpg_form-table td .bpg_minus_btn {
-    background-color: var(--red-color);
-    border-color: var(--red-color);
+    background-color: var(--bpg-red-color);
+    border-color: var(--bpg-red-color);
 }
 
 .bpg_form-table td .bpg_plus_btn:before,
@@ -409,7 +409,7 @@ p.bpg_note {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: var(--white-color);
+    background-color: var(--bpg-white-color);
 }
 
 .bpg_form-table td .bpg_plus_btn:after {
@@ -451,7 +451,7 @@ p.bpg_note {
     background-color: #2b9348;
     padding: 10px 20px;
     border-radius: 5px;
-    color: var(--white-color);
+    color: var(--bpg-white-color);
 }
 .bpg_success_msg_box {
     position: relative;
@@ -482,7 +482,7 @@ p.bpg_note {
     left: 50%;
     height: 20px;
     width: 2px;
-    background-color: var(--white-color);
+    background-color: var(--bpg-white-color);
     transform: translate(-50%, -50%) rotate(45deg);
 }
 
