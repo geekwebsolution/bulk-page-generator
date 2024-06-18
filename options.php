@@ -7,7 +7,6 @@ $default_tab = null;
 $tab = "";
 $tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : $default_tab;
 
-
 if (!class_exists('bpg_settings')) {
     class bpg_settings
     {
@@ -66,7 +65,7 @@ if (!class_exists('bpg_settings')) {
                     </div>
                 </div>
             </div>
-<?php
+            <?php
         }
     }
     new bpg_settings();

@@ -3,14 +3,14 @@
 Plugin Name: Bulk Page Generator
 Description: Bulk Pages/Posts Generator is a plugin that provides an easy way through which a user can create multiple pages/posts at a time.
 Author: Geek Code Lab
-Version: 1.3
+Version: 1.3.1
 Author URI: https://geekcodelab.com/
 Text Domain : bulk-page-generator 
 */
 
 if (!defined('ABSPATH')) exit;
 
-define('BPG_BUILD', 1.3);
+define('BPG_BUILD', '1.3.1');
 
 if (!defined('BPG_PLUGIN_DIR_PATH'))
     define('BPG_PLUGIN_DIR_PATH', plugin_dir_path(__FILE__));
@@ -24,7 +24,6 @@ function bpg_plugin_load() {
         return;
     }
 }
-
 
 $plugin = plugin_basename(__FILE__);
 add_filter("plugin_action_links_$plugin", 'bpg_add_plugin_link');
@@ -104,11 +103,8 @@ function bpg_add_more_row(){
                 <button type="button" class="bpg_remove_page bpg_minus_btn">-</button>
             </td>
         </tr>
-
     </tbody>
-
-
-<?php
+    <?php
     die;
 }
 

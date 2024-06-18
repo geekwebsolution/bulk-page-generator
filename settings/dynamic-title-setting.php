@@ -33,7 +33,7 @@ if (!class_exists('bpg_dynamic_title_settings')) {
                     $authors = filter_input(INPUT_POST, 'bpg_author', FILTER_SANITIZE_SPECIAL_CHARS);
                     $authors = sanitize_text_field(wp_unslash($authors));
 
-                    $parent_page_id = filter_input(INPUT_POST, 'bpg_parent_page', FILTER_SANITIZE_SPECIAL_CHARS);
+                    $parent_page_id = filter_input(INPUT_POST, 'bpg_parent_id', FILTER_SANITIZE_SPECIAL_CHARS);
                     $parent_page_id = sanitize_text_field(wp_unslash($parent_page_id));
 
                     $image_src = filter_var(sanitize_url($_POST['bpg_media_url']), FILTER_VALIDATE_URL);
@@ -232,20 +232,23 @@ if (!class_exists('bpg_dynamic_title_settings')) {
                                 </div>
                             </td>
                         </tr>
-                        <tr class="bpg_page_post_parent_page" style="display:none">
+                        
+                        <tr class="bpg_page_post_parent_page"  style="display:none;">
                             <th class="bpg_titledesc"><?php esc_html_e('Parent Page', 'bulk-page-generator'); ?></th>
                             <td>
                                 <div class="bpg_dropdown">
-                                    <select name="bpg_parent_page">
-                                        <option value="0"><?php esc_html_e(__('Select page')); ?></option>
-                                        <?php $pages = get_pages();
-                                        foreach ($pages as $page) { ?>
-                                            <option value="<?php esc_attr_e($page->ID, 'bulk-page-generator'); ?>"><?php esc_attr_e($page->post_title, 'bulk-page-generator');  ?></option>
-                                        <?php } ?>
-                                    </select>
+                                    <?php
+                                    wp_dropdown_pages(array(
+                                        'name' => 'bpg_parent_id',
+                                        'show_option_none' => '(no parent)',
+                                        'option_none_value' => '0',
+                                        'sort_column' => 'menu_order, post_title',
+                                        'echo' => 1,
+                                        'hierarchical' => 1
+                                    ));
+                                    ?>
                                 </div>
                                 <p class="bpg_note"><?php esc_html_e('Applies to ', 'bulk-page-generator'); ?> <b><?php esc_html_e('Pages', 'bulk-page-generator'); ?></b> <?php esc_html_e('only', 'bulk-page-generator'); ?></p>
-
                             </td>
                         </tr>
                         <tr class="bpg_page_post_template" style="display:none">
@@ -269,8 +272,7 @@ if (!class_exists('bpg_dynamic_title_settings')) {
                     <input type="submit" value="Save" class="submit-btn" name="submit_dynamic_title">
                 </form>
             </div>
-<?php
-
+            <?php
         }
     }
 }

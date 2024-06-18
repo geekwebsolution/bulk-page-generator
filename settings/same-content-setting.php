@@ -1,6 +1,4 @@
 <?php
-
-
 if (!class_exists('bpg_same_content_settings')) {
     class bpg_same_content_settings
     {
@@ -34,6 +32,9 @@ if (!class_exists('bpg_same_content_settings')) {
                     $page_status = filter_input(INPUT_POST, 'bpg_status', FILTER_SANITIZE_SPECIAL_CHARS);
                     $page_status = sanitize_text_field(wp_unslash($page_status));
 
+                   
+                    
+
                     $image_src = filter_var(sanitize_url($_POST['bpg_media_url']), FILTER_VALIDATE_URL);
 
                     $template_name = filter_input(INPUT_POST, 'bpg_template', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -46,8 +47,8 @@ if (!class_exists('bpg_same_content_settings')) {
                     $authors = filter_input(INPUT_POST, 'bpg_author', FILTER_SANITIZE_SPECIAL_CHARS);
                     $authors = sanitize_text_field(wp_unslash($authors));
 
-                    $parent_page_id = filter_input(INPUT_POST, 'bpg_parent_page', FILTER_SANITIZE_SPECIAL_CHARS);
-                    $parent_page_id = sanitize_text_field(wp_unslash($parent_page_id));
+                    $bpg_parent_id = filter_input(INPUT_POST, 'bpg_parent_id', FILTER_SANITIZE_SPECIAL_CHARS);
+                    $bpg_parent_id = sanitize_text_field(wp_unslash($bpg_parent_id));
 
                     if (array_key_exists($type, $post_types)) {
                         $error = 1;
@@ -55,15 +56,15 @@ if (!class_exists('bpg_same_content_settings')) {
                         if (isset($page_list) && !empty($page_list)) {
                             foreach ($page_list as $page) {
                                 $my_post = array(
-                                    'post_title'     => $prefix_word . ' ' . $page . ' ' . $postfix_word,
-                                    'post_content'   => $pages_content,
-                                    'post_excerpt'   => $excerpt_content,
-                                    'post_type'      => $type,
-                                    'post_status'    => $page_status,
-                                    'page_template'  => $template_name,
-                                    'comment_status' => $comment_status,
-                                    'post_author'    => $authors,
-                                    'post_parent'    => $parent_page_id,
+                                    'post_title'        => $prefix_word . ' ' . $page . ' ' . $postfix_word,
+                                    'post_content'      => $pages_content,
+                                    'post_excerpt'      => $excerpt_content,
+                                    'post_type'         => $type,
+                                    'post_status'       => $page_status,
+                                    'page_template'     => $template_name,
+                                    'comment_status'    => $comment_status,
+                                    'post_author'       => $authors,
+                                    'post_parent'       => $bpg_parent_id
                                 );
                                 $last_insert_id = wp_insert_post($my_post);
                                 if ($last_insert_id) {
@@ -213,17 +214,22 @@ if (!class_exists('bpg_same_content_settings')) {
                                 </div>
                             </td>
                         </tr>
-                        <tr class="bpg_page_post_parent_page" style="display:none;">
+
+                      
+                        <tr class="bpg_page_post_parent_page"  style="display:none;">
                             <th class="bpg_titledesc"><?php esc_html_e('Parent Page', 'bulk-page-generator'); ?></th>
                             <td>
                                 <div class="bpg_dropdown">
-                                    <select name="bpg_parent_page">
-                                        <option value="0"><?php esc_attr_e(__('Select Parent Page')); ?></option>
-                                        <?php $pages = get_pages();
-                                        foreach ($pages as $page) { ?>
-                                            <option value="<?php esc_attr_e($page->ID, 'bulk-page-generator'); ?>"><?php esc_attr_e($page->post_title, 'bulk-page-generator');  ?></option>
-                                        <?php } ?>
-                                    </select>
+                                    <?php
+                                    wp_dropdown_pages(array(
+                                        'name' => 'bpg_parent_id',
+                                        'show_option_none' => '(no parent)',
+                                        'option_none_value' => '0',
+                                        'sort_column' => 'menu_order, post_title',
+                                        'echo' => 1,
+                                        'hierarchical' => 1
+                                    ));
+                                    ?>
                                 </div>
                                 <p class="bpg_note"><?php esc_html_e('Applies to ', 'bulk-page-generator'); ?> <b><?php esc_html_e('Pages', 'bulk-page-generator'); ?></b> <?php esc_html_e('only', 'bulk-page-generator'); ?></p>
                             </td>
@@ -249,7 +255,7 @@ if (!class_exists('bpg_same_content_settings')) {
                     <input type="submit" class="submit-btn" value="Save" name="submit_same_content">
                 </form>
             </div>
-<?php
+            <?php
         }
     }
 }
