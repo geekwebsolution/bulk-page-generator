@@ -1,6 +1,4 @@
 <?php
-
-
 if (!class_exists('bpg_same_content_settings')) {
     class bpg_same_content_settings
     {
@@ -49,9 +47,6 @@ if (!class_exists('bpg_same_content_settings')) {
                     $authors = filter_input(INPUT_POST, 'bpg_author', FILTER_SANITIZE_SPECIAL_CHARS);
                     $authors = sanitize_text_field(wp_unslash($authors));
 
-                    // $parent_page_id = filter_input(INPUT_POST, 'bpg_parent_page', FILTER_SANITIZE_SPECIAL_CHARS);
-                    // $parent_page_id = sanitize_text_field(wp_unslash($parent_page_id));
-
                     $bpg_parent_id = filter_input(INPUT_POST, 'bpg_parent_id', FILTER_SANITIZE_SPECIAL_CHARS);
                     $bpg_parent_id = sanitize_text_field(wp_unslash($bpg_parent_id));
 
@@ -69,8 +64,7 @@ if (!class_exists('bpg_same_content_settings')) {
                                     'page_template'     => $template_name,
                                     'comment_status'    => $comment_status,
                                     'post_author'       => $authors,
-                                    'post_parent'       => $bpg_parent_id,
-                                    // 'post_parent'       => $parent_page_id,
+                                    'post_parent'       => $bpg_parent_id
                                 );
                                 $last_insert_id = wp_insert_post($my_post);
                                 if ($last_insert_id) {
@@ -261,7 +255,7 @@ if (!class_exists('bpg_same_content_settings')) {
                     <input type="submit" class="submit-btn" value="Save" name="submit_same_content">
                 </form>
             </div>
-<?php
+            <?php
         }
     }
 }

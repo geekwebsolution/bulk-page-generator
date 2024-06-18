@@ -350,8 +350,7 @@ if (!class_exists('bpg_diffrent_content_settings')) {
                     </form>
                 </div>
             </div>
-<?php
-
+            <?php
         }
     }
 }

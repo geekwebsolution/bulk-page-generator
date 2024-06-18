@@ -3,9 +3,9 @@ Contributors: rajkakadiya, rvadhel
 Donate link: https://paypal.me/rvadhel
 Tags: bulk page, bulk post, page generator, bulk creator, generator
 Requires PHP: 5.2.4
-Requires at least: 3.0.1
-Tested up to: 6.4.2
-Stable tag: 1.3
+Requires at least: 6.0
+Tested up to: 6.5.4
+Stable tag: 1.3.1
 License: GPLv2 or later
 
 Using this plugin user can create Pages/Posts easily with the simplest user interface which provide all the attribute which are necessary while creating Pages/Posts.
@@ -39,6 +39,7 @@ Now the main feature is on the stage where you can add multiple pages, posts, an
 🔹 Allows you to generate multiple pages with dynamically changed data with variable and unique variable data( word(s) or phrase(s))
 🔹 This plugin even works with WooCommerce's product and custom post type or you can say all post types
 🔹 This plugin is very easy to use and very simple user interface
+🔹 Translate Support Loco Translate Plugin
 
 
 
@@ -56,6 +57,9 @@ After active plugin go to  Bulk page generator menu
 
 
 == Changelog ==
+= 1.3.1 =
+Updated dynamic parent page dropdown
+
 = 1.3 =
 Fixed admin enqueue script bug
 Tested upto wp version 6.4.2

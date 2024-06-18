@@ -272,8 +272,7 @@ if (!class_exists('bpg_dynamic_title_settings')) {
                     <input type="submit" value="Save" class="submit-btn" name="submit_dynamic_title">
                 </form>
             </div>
-<?php
-
+            <?php
         }
     }
 }
