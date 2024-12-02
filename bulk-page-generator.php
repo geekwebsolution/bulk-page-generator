@@ -24,6 +24,8 @@ if (!defined('BPG_PLUGIN_DIR'))
 if (!defined('BPG_PLUGIN_BASENAME'))
     define('BPG_PLUGIN_BASENAME', plugin_basename(__FILE__));
 
+require (BPG_PLUGIN_DIR_PATH .'updater/updater.php');
+
 add_action( 'admin_init', 'bpg_plugin_load' );
 function bpg_plugin_load() {
     if(!current_user_can('publish_posts') && !current_user_can('upload_files')) {
