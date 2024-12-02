@@ -19,9 +19,8 @@ function bpg_updater_utility() {
     return $settings;
 }
 
-register_activation_hook(__FILE__, 'bpg_activation');
-function bpg_activation() {
-    bpg_updater_activate();
+register_activation_hook(__FILE__, 'bpg_updater_activate');
+function bpg_updater_activate() {
     // Refresh transients
     delete_site_transient('update_plugins');
     delete_transient('bpg_plugin_updates');
