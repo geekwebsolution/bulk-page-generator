@@ -5,7 +5,7 @@ Description: Bulk Pages/Posts Generator is a plugin that provides an easy way th
 Author: Geek Code Lab
 Version: 1.3.1
 Author URI: https://geekcodelab.com/
-Text Domain : bulk-page-generator 
+Text Domain : bulk-page-generator
 */
 
 if (!defined('ABSPATH')) exit;
@@ -17,6 +17,12 @@ if (!defined('BPG_PLUGIN_DIR_PATH'))
 
 if (!defined('BPG_PLUGIN_URL'))
     define('BPG_PLUGIN_URL', plugins_url() . '/' . basename(dirname(__FILE__)));
+
+if (!defined('BPG_PLUGIN_DIR'))
+    define('BPG_PLUGIN_DIR', plugin_basename(__DIR__));
+
+if (!defined('BPG_PLUGIN_BASENAME'))
+    define('BPG_PLUGIN_BASENAME', plugin_basename(__FILE__));
 
 add_action( 'admin_init', 'bpg_plugin_load' );
 function bpg_plugin_load() {
@@ -40,7 +46,7 @@ function bpg_add_plugin_link($links){
 // admin scripts
 add_action('admin_enqueue_scripts', 'bpg_plugin_admin_scripts');
 function bpg_plugin_admin_scripts( $hook ){
-    
+
     if (is_admin() && $hook == 'toplevel_page_bulk-page-generator') {
         $plugin_url = BPG_PLUGIN_URL . '/assets';
         wp_enqueue_editor();
