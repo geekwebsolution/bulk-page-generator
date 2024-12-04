@@ -25,6 +25,18 @@ if (!defined('BPG_PLUGIN_BASENAME'))
     define('BPG_PLUGIN_BASENAME', plugin_basename(__FILE__));
 
 require (BPG_PLUGIN_DIR_PATH .'updater/updater.php');
+/**
+ * The code that runs during plugin activation.
+ * This action is documented in includes/class-activator.php
+ */
+function bpg_activation_hook() {
+    bpg_updater_activate();
+}
+
+register_activation_hook( __FILE__, 'bpg_activation_hook' );
+add_action('upgrader_process_complete', 'bpg_updater_activate'); // remove  transient  on plugin  update
+
+
 
 add_action( 'admin_init', 'bpg_plugin_load' );
 function bpg_plugin_load() {
