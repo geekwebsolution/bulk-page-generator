@@ -12,7 +12,7 @@ function bpg_updater_utility() {
         'get_base' =>BPG_PLUGIN_BASENAME,
         'get_slug' =>BPG_PLUGIN_DIR,
         'get_version' =>BPG_BUILD,
-        'get_api' => 'https://dev.geekcodelab.com/gcl-free-plugins/',
+        'get_api' => 'https://download.geekcodelab.com/',
         'license_update_class' => $prefix . 'Update_Checker'
     ];
 
