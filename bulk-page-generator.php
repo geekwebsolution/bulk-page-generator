@@ -3,14 +3,14 @@
 Plugin Name: Bulk Page Generator
 Description: Bulk Pages/Posts Generator is a plugin that provides an easy way through which a user can create multiple pages/posts at a time.
 Author: Geek Code Lab
-Version: 1.4.0
+Version: 1.4.1
 Author URI: https://geekcodelab.com/
 Text Domain : bulk-page-generator
 */
 
 if (!defined('ABSPATH')) exit;
 
-define('BPG_BUILD', '1.4.0');
+define('BPG_BUILD', '1.4.1');
 
 if (!defined('BPG_PLUGIN_DIR_PATH'))
     define('BPG_PLUGIN_DIR_PATH', plugin_dir_path(__FILE__));
@@ -167,5 +167,54 @@ function bpg_featured_img($image_src, $last_insert_id)
         }
 
         set_post_thumbnail($last_insert_id, $attach_id);
+    }
+}
+
+/**
+ * Render parent selector for hierarchical post types.
+ *
+ * Displays a separate parent dropdown for each hierarchical
+ * public post type. JavaScript will show the correct dropdown
+ * based on the selected post type.
+ */
+function bpg_render_parent_dropdowns() {
+
+    $post_types = get_post_types(
+        array(
+            'public'       => true,
+            'hierarchical' => true,
+        ),
+        'objects'
+    );
+
+    if (empty($post_types)) {
+        return;
+    }
+
+    foreach ($post_types as $post_type) {
+
+        ?>
+        <div
+            class="bpg-parent-dropdown"
+            data-post-type="<?php echo esc_attr($post_type->name); ?>"
+            style="display:none;"
+        >
+            <?php
+            wp_dropdown_pages(
+                array(
+                    'name'              => 'bpg_parent_id',
+                    'id'                => 'bpg_parent_id_' . $post_type->name,
+                    'class'             => 'bpg_parent_id',
+                    'post_type'         => $post_type->name,
+                    'show_option_none'  => '(no parent)',
+                    'option_none_value' => '0',
+                    'sort_column'       => 'menu_order,post_title',
+                    'echo'              => true,
+                    'hierarchical'      => true,
+                )
+            );
+            ?>
+        </div>
+        <?php
     }
 }

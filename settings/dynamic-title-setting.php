@@ -233,22 +233,19 @@ if (!class_exists('bpg_dynamic_title_settings')) {
                             </td>
                         </tr>
                         
-                        <tr class="bpg_page_post_parent_page"  style="display:none;">
-                            <th class="bpg_titledesc"><?php esc_html_e('Parent Page', 'bulk-page-generator'); ?></th>
+                        <tr class="bpg_page_post_parent_page" style="display:none;">
+                            <th class="bpg_titledesc">
+                                <?php esc_html_e('Parent Page', 'bulk-page-generator'); ?>
+                            </th>
+
                             <td>
                                 <div class="bpg_dropdown">
-                                    <?php
-                                    wp_dropdown_pages(array(
-                                        'name' => 'bpg_parent_id',
-                                        'show_option_none' => '(no parent)',
-                                        'option_none_value' => '0',
-                                        'sort_column' => 'menu_order, post_title',
-                                        'echo' => 1,
-                                        'hierarchical' => 1
-                                    ));
-                                    ?>
+                                    <?php bpg_render_parent_dropdowns(); ?>
                                 </div>
-                                <p class="bpg_note"><?php esc_html_e('Applies to ', 'bulk-page-generator'); ?> <b><?php esc_html_e('Pages', 'bulk-page-generator'); ?></b> <?php esc_html_e('only', 'bulk-page-generator'); ?></p>
+
+                                <p class="bpg_note">
+                                    <?php esc_html_e('Applies to hierarchical post types only.', 'bulk-page-generator'); ?>
+                                </p>
                             </td>
                         </tr>
                         <tr class="bpg_page_post_template" style="display:none">
