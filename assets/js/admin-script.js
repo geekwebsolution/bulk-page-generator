@@ -115,26 +115,61 @@ jQuery(document).ready(function ($) {
     /** Form Validation End */
 
     jQuery("body").on("change", "#bpg_type", function () {
-        $this = jQuery(this).val();
-        if ($this == '') {
-            jQuery(".bpg_page_post_parent_page").fadeIn();
-            jQuery(".bpg_page_post_template").fadeIn();
-            jQuery('.bpg_page_post_excerpt').fadeOut();
-        }
-        else {
-            if ($this == 'page') {
-                jQuery(".bpg_page_post_parent_page").fadeIn();
-                jQuery(".bpg_page_post_template").fadeIn();
-                jQuery('.bpg_page_post_excerpt').fadeOut();
-            }
-            else {
-                jQuery('.bpg_page_post_excerpt').fadeIn();
-                jQuery('.bpg_page_post_parent_page').fadeOut();
-                jQuery('.bpg_page_post_template').fadeOut();
-            }
+
+        var selectedType = jQuery(this).val();
+
+        // Hide all parent dropdowns first.
+        jQuery(".bpg-parent-dropdown").hide();
+
+        // Disable all parent dropdowns so only the selected
+        // post type parent value is submitted.
+        jQuery(".bpg-parent-dropdown select")
+            .prop("disabled", true)
+            .val("0");
+
+        if (!selectedType) {
+            jQuery(".bpg_page_post_parent_page").hide();
+            jQuery(".bpg_page_post_template").hide();
+            jQuery(".bpg_page_post_excerpt").hide();
+            return;
         }
 
-    })
+        // Find the parent dropdown belonging to the selected post type.
+        var parentDropdown = jQuery(
+            '.bpg-parent-dropdown[data-post-type="' + selectedType + '"]'
+        );
+
+        if (parentDropdown.length) {
+
+            // Show the parent field.
+            jQuery(".bpg_page_post_parent_page").fadeIn();
+
+            // Show the correct dropdown.
+            parentDropdown.show();
+
+            // Enable only this dropdown.
+            parentDropdown.find("select")
+                .prop("disabled", false);
+        } else {
+            // Non-hierarchical post type.
+            jQuery(".bpg_page_post_parent_page").fadeOut();
+        }
+
+        // Pages and hierarchical CPTs can use parent/template.
+        if (selectedType === "page") {
+
+            jQuery(".bpg_page_post_template").fadeIn();
+            jQuery(".bpg_page_post_excerpt").fadeOut();
+
+        } else {
+
+            jQuery(".bpg_page_post_template").fadeOut();
+            jQuery(".bpg_page_post_excerpt").fadeIn();
+        }
+    });
+
+    // Initialize on page load.
+    jQuery("#bpg_type").trigger("change");
 
     /** Wordpress media select */
     var wkMedia;

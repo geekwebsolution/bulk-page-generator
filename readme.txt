@@ -5,7 +5,7 @@ Tags: bulk page, bulk post, page generator, bulk creator, generator
 Requires PHP: 5.2.4
 Requires at least: 6.0
 Tested up to: 6.5.4
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv2 or later
 
 Using this plugin user can create Pages/Posts easily with the simplest user interface which provide all the attribute which are necessary while creating Pages/Posts.
@@ -57,6 +57,9 @@ After active plugin go to  Bulk page generator menu
 
 
 == Changelog ==
+
+= 1.4.1 =
+Added support for a parent page for the CPT.
 
 = 1.4.0 =
 Bug Fixed
